@@ -36,7 +36,7 @@
                     <div class="mg-10 mg_b">
                         <div class="col-md-6 col-sm-6 col-xs-12 pd-10">
                             <div class="item-dutoan">
-                                <label>Chiều rộng m2 (ví dụ2.5):</label>
+                                <label>Chiều rộng m (ví dụ2.5):</label>
                                 <input type="number" name="txtrong" class="stip" step="0.1" required="required">
                             </div>
                         </div>
@@ -44,7 +44,7 @@
 
                         <div class="col-md-6 col-sm-6 col-xs-12 pd-10">
                             <div class="item-dutoan">
-                                <label>Chiều dài m2 (ví dụ2.5):</label>
+                                <label>Chiều dài m (ví dụ2.5):</label>
                                 <input type="number" name="txtcao" class="stip" step="0.1" required="required">
                             </div>
                         </div>

@@ -79,9 +79,11 @@
                         <div class="box-list">
                             <ul>
                                 @if ($item->config_type_show == 0)
+                
                                     <ul>
                                         @if ($item->category->childrens->count() > 0)
                                             @foreach ($item->category->childrens as $key => $category)
+
                                                 <li class="{{ $key == 0 ? 'active' : '' }}">
                                                     <a onclick="home.tab(this)"
                                                         data-type="tab-{{ $item->config_slug }}"
@@ -94,7 +96,7 @@
                                             @endforeach
                                         @else
                                             <li class="active">
-                                                <a data-type="tab-{{ $category->config_slug }}"
+                                                <a data-type="tab-{{ $item->category->config_slug }}"
                                                     data-id={{ $item->id }} data-number=4 href="javascript:"
                                                     title="{{ $item->category->category_name }}">{{ $item->category->category_name }}
                                                 </a>
