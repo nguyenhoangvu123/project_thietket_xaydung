@@ -43,9 +43,9 @@
     </script>
     <script type="text/javascript" src="{{ asset('client/js/jquery-1.9.1.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('client/assets/css/font.css') }} ">
-	@if(!request()->is('/'))
+
     <link rel="stylesheet" href="{{ asset('client/assets/css/style_new.css') }}">
-	@endif
+	
     <link rel="stylesheet" href="{{ asset('client/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('client/assets/css/hoverEffects.css') }}">
     <link rel="stylesheet" href="{{ asset('client/assets/css/navstylechange.css') }}">
