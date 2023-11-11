@@ -21,18 +21,7 @@ class PostController extends Controller
 
     public function index($slug_category, $slug_post)
     {
-        $configLayout = $this->configLayout
-            ->with([
-                'posts',
-                'category' => function ($q) {
-                    $q->with('posts');
-                }
-            ])
-            ->where('config_status', $this->configLayout::CONFIG_SHOW)
-            ->where("config_image", "<>", "")
-            ->orderBy('config_postion', 'DESC')
-            ->first();
-        $slugConfigLayout = $configLayout->config_slug;
+
         $idPost = $this->getIdPost($slug_post);
         $itemCategory = $this->category->where("category_slug", $slug_category)->first();
         if (!$itemCategory) {
@@ -47,8 +36,6 @@ class PostController extends Controller
             'itemCategory' => $itemCategory,
             'post' => $post,
             'idPost' => $post->id,
-            'configLayout' => $configLayout,
-            'slugConfigLayout' => $slugConfigLayout,
             'listPostRelations' => $listPostRelations
         ]);
     }

@@ -88,11 +88,6 @@
     color: yellow;
 }
 
-.menu.show-menu .button-dangky {
-    color: #3B3D8F;
-    border-color: #3B3D8F;
-}
-
 #container-left {
     position: sticky;
     top: 113px;
@@ -295,18 +290,14 @@ a {
     display: inline-block;
     transition: 0.3s;
     padding: 7px 22px;
-    border: 1px solid #fff;
     border-radius: 6px;
-    color: #fff;
+    color: black;
+    background: #F6951E;
     text-transform: capitalize;
     font-family: 'MM';
     font-size: 12px;
 }
 
-.button-dangky:hover {
-    background: #3B3D8F;
-    cursor: pointer;
-}
 
 .owl-height {
     -webkit-transition: height 500ms ease-in-out;
@@ -595,8 +586,7 @@ a {
 
 .menu ul li a.active,
 .menu ul li:hover>a {
-    background: black;
-    color: yellow
+    color: rgba(255, 255, 0, 0.721)
 }
 
 .menu-in ul li a {
@@ -609,7 +599,7 @@ a {
 
 .menu-in .button-dangky {
     background: #F6951E;
-    color: #fff;
+    color: black;
 }
 
 ul,
@@ -1948,13 +1938,6 @@ section#menu_top #menu_top ul#nav>li:last-child>a:after {
     display: none
 }
 
-.menu_active,
-section#menu_top #menu_top ul#nav>li>a.menu_active,
-#menu_top ul#nav>li>a:hover {
-    background: black;
-    color: yellow !important
-}
-
 section#menu_top #menu_top ul#nav>li>ul li {
     position: relative
 }
@@ -2429,7 +2412,7 @@ nav:not(.mm-menu) {
 }
 
 nav#menu {
-    background: #04a661 !important;
+    background: #F8A238 !important;
     z-index: 0 !important
 }
 
@@ -5674,8 +5657,8 @@ input {
 
 .newsletter-button1 input[type=submit] {
     border: 0px;
-    background-color: #3B3D8F;
-    color: #fff;
+    background-color: #F6951E;
+    color: black;
     display: inline-block;
     padding: 14px 16px;
     text-transform: uppercase;
@@ -5707,7 +5690,7 @@ input {
 
 .tt_menu a {
     float: right;
-    color: #fff !important;
+    color: black !important;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 30px;
@@ -11303,9 +11286,9 @@ body {
 
 .hotline_fix {
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 9999;
     padding: 10px 20px;
     color: #3B3D8F;
     font-family: Arial;
@@ -16224,7 +16207,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .img-da img {
     width: 100%;
-    height: 100%;
+    height: 100% !important;
     object-fit: cover;
 }
 
@@ -17218,7 +17201,7 @@ body {
 
         .menu_rp {
             display: block;
-            background: #04a661 !important;
+            background: #F8A238 !important;
             position: fixed;
             top: 14px;
             right: 10px;
@@ -24335,5 +24318,31 @@ label.is-invalid {
 @media (max-width: 1024px) {
     .item-duan .img-da .box-image-mask1 {
         height: 180px;
+    }
+}
+
+@media (max-width: 640px) {
+    .form-estimate-detail .estimate-detail-first ul, .form-estimate-detail .estimate-detail-first .floors {
+        font-size: 12px;
+    }
+
+    .form-estimate-detail .coefficients ul, .form-estimate-detail .estimate-detail-first .floors {
+        font-size: 12px;
+    }
+    .form-estimate .estimate-detail-three .panel-body {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-estimate-detail .estimate-detail-first ul, .form-estimate-detail .estimate-detail-first .floors {
+        font-size: 10px;
+    }
+
+    .form-estimate-detail .coefficients ul, .form-estimate-detail .estimate-detail-first .floors {
+        font-size: 10px;
+    }
+    .form-estimate .estimate-detail-three .panel-body {
+        font-size: 10px;
     }
 }

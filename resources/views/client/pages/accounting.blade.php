@@ -17,7 +17,7 @@
                             <div class="description"></div>
                         </div>
                         <div class="col-sm-12">
-                            <form method="POST" action="https://xconsg.com.vn/khai-toan" accept-charset="UTF-8"
+                            <form
                                 class="estimates"><input name="_token" type="hidden"
                                     value="5wAZu3duO6ntsxKQAYEnV3E9GHCswTgM6p62vnqU">
                                 <input type="text" id="isChangeInput" hidden value="0">
@@ -1645,12 +1645,6 @@
 
     </div>
     @include('client.components.slick.partner')
-    @if ($configLayout)
-        @include('client.components.slick.square', [
-            'item' => $configLayout,
-            'contentSection' => 'content-section',
-        ])
-    @endif
     @include('client.components.footer', ['contentSection' => 'content-section'])
     @include('client.components.host_fix')
 @endsection

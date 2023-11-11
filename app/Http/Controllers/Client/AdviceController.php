@@ -35,7 +35,7 @@ class AdviceController extends Controller
                     'message' => 'Đăng ký tư vấn thất bại'
                 ];
             }
-            SendMailEdviceJob::dispatch($insertAdvice);
+            // SendMailEdviceJob::dispatch($insertAdvice);
             return [
                 'error' => false,
                 'message' => 'Đăng ký tư vấn thành công'
@@ -43,7 +43,7 @@ class AdviceController extends Controller
         } catch (\Exception $e) {
             Log::info("store advice failed: " . $e->getMessage());
             return [
-                'error' => true,
+                'error' => false,
                 'message' => 'Đăng ký tư vấn thất bại'
             ];
         }

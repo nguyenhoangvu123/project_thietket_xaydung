@@ -14,7 +14,9 @@
             @foreach ($listPost as $key => $item)
                 <tr>
                     <td>{{ $key + 1 }}</td>
-                    <td>{{ $item->post_title }}</td>
+                    <td style="width:400px"> 
+                        {{ $item->post_title }}
+                    </td>
                     <td>
                         {{ $item->category ? $item->category->category_name : '' }}
                     </td>

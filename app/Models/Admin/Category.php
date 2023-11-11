@@ -45,6 +45,7 @@ class Category extends Model
         return $this->hasMany(Post::class, 'category_id');
     }
 
+
     //================================================Filter===================================
     public function filterName($query, $value)
     {

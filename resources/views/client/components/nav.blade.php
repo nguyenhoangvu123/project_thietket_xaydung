@@ -2,7 +2,23 @@
     $key = request()->route()->parameters['slug_category'] ?? '';
 @endphp
 @if ($key || request()->is('gioi-thieu') || request()->is('lien-he') || request()->is('khai-toan'))
-    <div class="menu menu-in">
+    <div class="menu menu-in" style="flex-direction: column;">
+        <div class="wrap-content d-flex justify-content-end">
+            <div class="col-social">
+                <a href="tel:0283 740 5678" title="Hotline" target="_blank" class="hotline"><i class="fa fa-phone"></i>  {{ $listSettingFooter->listSettingBasic->value->hotline ?? "" }}</a>
+                <a href="{{$listSettingFooter->listSettingBasic->value->facebook ?? ''}}" title="Facebook" target="_blank">
+                    <img src="{{ asset('client/assets/images/icon-fb.png') }}" />
+                </a>
+                <a href="{{$listSettingFooter->listSettingBasic->value->youtube ?? ''}}" title="Youtube" target="_blank">
+                    <img src="{{ asset('client/assets/images/youtube.png') }}" /></a>
+                <a href="{{$listSettingFooter->listSettingBasic->value->intasgram ?? ''}}" title="instagram" target="_blank">
+                    <img src="{{ asset('client/assets/images/instagram.png') }}" /></a>
+                </a>
+                <a href="{{$listSettingFooter->listSettingBasic->value->zalo ?? ''}}" title="zalo" target="_blank">
+                    <img src="{{ asset('client/assets/images/zalo_new.png') }}" /></a>
+                </a>
+            </div>
+        </div>
         <div class="wrap-content d-flex align-items-center justify-content-between">
             <div class="logo">
                 <a href="{{ route('client.home') }}" title="{{ $listSettingBasic->value->nameCompany }}"><img
@@ -17,20 +33,11 @@
                 </li>
                 @if ($listCategory->count() > 0)
                     @foreach ($listCategory as $item)
-                        @php
-                            $childrent = $item->childrens ? $item->childrens->first() : '';
-                        @endphp
                         <li class=" transition_all"><a
-                                @if ($childrent) href="{{ route('client.category.childrent', [
+                                href="{{ route('client.category.parent', [
                                     'slug_category' => $item->category_slug,
-                                    'slug_category_childrent' => $childrent ? $childrent->category_slug : $item->category_slug,
                                 ]) }}"
-                               @else
-                               href="{{ route('client.category.parent', [
-                                   'slug_category' => $item->category_slug,
-                               ]) }}" @endif
                                 class="transition_all {{ $key == $item->category_slug ? 'menu_active' : '' }}"><span>{{ $item->category_name }}</span></a>
-
                         </li>
                     @endforeach
                     <li class=" transition_all"><a href="{{ route('client.accounting') }}"
@@ -58,26 +65,19 @@
         </div>
     </div>
     <nav id="menu">
+        
         <ul id="nav">
-            <li class=" transition_all"><a href="{{ 'client.home' }}" class="transition_all"><span>Trang
+            <li class=" transition_all"><a href="{{ route('client.home') }}" class="transition_all"><span>Trang
                         chủ</span></a></li>
             <li class=" transition_all"><a href="{{ route('client.introduce') }}"
                     class="transition_all {{ request()->is('gioi-thieu') ? 'menu_active' : '' }}"><span>Giới
                         thiệu</span></a>
                 @if ($listCategory->count() > 0)
                     @foreach ($listCategory as $item)
-                        @php
-                            $childrent = $item->childrens ? $item->childrens->first() : '';
-                        @endphp
             <li class=" transition_all"><a
-                    @if ($childrent) href="{{ route('client.category.childrent', [
+                    href="{{ route('client.category.parent', [
                         'slug_category' => $item->category_slug,
-                        'slug_category_childrent' => $childrent ? $childrent->category_slug : $item->category_slug,
                     ]) }}"
-                       @else
-                       href="{{ route('client.category.parent', [
-                           'slug_category' => $item->category_slug,
-                       ]) }}" @endif
                     class="transition_all {{ $key == $item->category_slug ? 'menu_active' : '' }}"><span>{{ $item->category_name }}</span></a>
 
             </li>
@@ -95,13 +95,30 @@
 </ul>
 </nav>
 @else
-<div class="menu">
+<div class="menu d-flex" style="flex-direction: column;">
+    <div class="wrap-content d-flex justify-content-end">
+        <div class="col-social">
+            <a href="tel:0283 740 5678" title="Hotline" target="_blank" class="hotline"><i class="fa fa-phone"></i>  {{ $listSettingFooter->listSettingBasic->value->hotline ?? "" }}</a>
+            <a href="{{$listSettingFooter->listSettingBasic->value->facebook ?? ''}}" title="Facebook" target="_blank">
+                <img src="{{ asset('client/assets/images/icon-fb.png') }}" />
+            </a>
+            <a href="{{$listSettingFooter->listSettingBasic->value->youtube ?? ''}}" title="Youtube" target="_blank">
+                <img src="{{ asset('client/assets/images/youtube.png') }}" /></a>
+            <a href="{{$listSettingFooter->listSettingBasic->value->intasgram ?? ''}}" title="instagram" target="_blank">
+                <img src="{{ asset('client/assets/images/instagram.png') }}" /></a>
+            </a>
+            <a href="{{$listSettingFooter->listSettingBasic->value->zalo ?? ''}}" title="zalo" target="_blank">
+                <img src="{{ asset('client/assets/images/zalo_new.png') }}" /></a>
+            </a>
+        </div>
+    </div>
     <div class="wrap-content d-flex align-items-center justify-content-between">
         <div class="logo">
             <a href="{{ route('client.home') }}" title="{{ $listSettingBasic->value->nameCompany }}"><img
                     src="{{ $listSettingBasic->value->logo }}" alt="{{ $listSettingBasic->value->nameCompany }}"></a>
         </div>
         <ul id="nav" class="d-flex align-items-center justify-content-between">
+            
             <li class=" transition_all"><a href="{{ route('client.home') }}"
                     class="transition_all {{ !request()->is('gioi-thieu') && !request()->is('lien-he') ? 'menu_active' : '' }}"><span>Trang
                         chủ</span></a></li>
@@ -111,20 +128,12 @@
             </li>
             @if ($listCategory->count() > 0)
                 @foreach ($listCategory as $item)
-                    @php
-                        $childrent = $item->childrens ? $item->childrens->first() : '';
-                    @endphp
                     <li class=" transition_all"><a
-                            @if ($childrent) href="{{ route('client.category.childrent', [
-                                'slug_category' => $item->category_slug,
-                                'slug_category_childrent' => $childrent ? $childrent->category_slug : $item->category_slug,
-                            ]) }}"
-                           @else
+                            
                            href="{{ route('client.category.parent', [
                                'slug_category' => $item->category_slug,
-                           ]) }}" @endif
+                           ]) }}"
                             class="transition_all {{ $key == $item->category_slug ? 'menu_active' : '' }}"><span>{{ $item->category_name }}</span></a>
-
                     </li>
                 @endforeach
                 <li class=" transition_all"><a href="{{ route('client.accounting') }}"
@@ -160,18 +169,10 @@
         </li>
         @if ($listCategory->count() > 0)
             @foreach ($listCategory as $item)
-                @php
-                    $childrent = $item->childrens ? $item->childrens->first() : '';
-                @endphp
                 <li class=" transition_all"><a
-                        @if ($childrent) href="{{ route('client.category.childrent', [
-                            'slug_category' => $item->category_slug,
-                            'slug_category_childrent' => $childrent ? $childrent->category_slug : $item->category_slug,
-                        ]) }}"
-                       @else
                        href="{{ route('client.category.parent', [
                            'slug_category' => $item->category_slug,
-                       ]) }}" @endif
+                       ]) }}"
                         class="transition_all {{ $key == $item->category_slug ? 'menu_active' : '' }}"><span>{{ $item->category_name }}</span></a>
 
                 </li>

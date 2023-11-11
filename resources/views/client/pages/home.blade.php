@@ -74,22 +74,7 @@
         @include('client.components.slick.customer')
         @include('client.components.slick.partner')
         @include('client.components.footer')
-    </div>
-    @include('client.components.host_fix')
-    <div class="face_right">
-        <div class="img_face"><a href="#"><img src="{{ asset('client/assets/images/facebook.png') }}"
-                    alt="facebook"></a></div>
-        <div class="rowf_right">
-
-            <div class="fb-page" data-href="https://www.facebook.com/XayDungGiaLong/" data-tabs="timeline"
-                data-width="300" data-height="250" data-small-header="false" data-adapt-container-width="true"
-                data-hide-cover="false" data-show-facepile="true">
-                <div class="fb-xfbml-parse-ignore">
-                    <blockquote cite="https://www.facebook.com/XayDungGiaLong/"><a
-                            href="https://www.facebook.com/XayDungGiaLong/">Facebook</a></blockquote>
-                </div>
-            </div>
-        </div>
+        @include('client.components.host_fix')
     </div>
     <style>
         .face_right {

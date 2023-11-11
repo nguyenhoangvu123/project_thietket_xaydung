@@ -148,3 +148,7 @@ button.submit-lg {
 #sortable li {
     cursor: pointer;
 }
+
+.td_title_post {
+    width: 150px !important;
+}

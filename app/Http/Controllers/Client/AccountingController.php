@@ -40,21 +40,7 @@ class AccountingController extends Controller
         $listAttrSupplies = $this->attrMaster->where("type", $this->attrMaster::TYPE_ATTRIBUTE_SUPPLIES)->get();
         $listStyleDesgin = $this->styleDesgin->get();
         $listTypeContruction = $this->typeContruction->get();
-        $configLayout = $this->configLayout
-            ->with([
-                'posts',
-                'category' => function ($q) {
-                    $q->with('posts');
-                }
-            ])
-            ->where('config_status', $this->configLayout::CONFIG_SHOW)
-            ->where("config_image", "<>", "")
-            ->orderBy('config_postion', 'DESC')
-            ->first();
-        $slugConfigLayout = $configLayout->config_slug;
         return view("client.pages.accounting", [
-            "configLayout" => $configLayout,
-            "slugConfigLayout" => $slugConfigLayout,
             'listFloor' => $listFloor,
             'listAttrContruction' => $listAttrContruction,
             'listAttrSupplies' => $listAttrSupplies,

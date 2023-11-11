@@ -9962,10 +9962,6 @@ button.list-group-item-gray.active {
   white-space: normal !important;
 }
 
-.text-nowrap {
-  white-space: nowrap !important;
-}
-
 /* rtl:begin:remove */
 .text-break {
   word-wrap: break-word !important;

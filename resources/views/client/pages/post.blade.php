@@ -1,43 +1,7 @@
 @extends('client.layouts.master')
 @section('content')
-    <div class="wrap-content">
-        <div xmlns:v="http://rdf.data-vocabulary.org/" id="breadcrumbs">
-            <ul itemprop="breadcrumb" class="breadcrumb">
-                <li typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="{{ route('client.home') }}"
-                        title=""><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                @if ($itemCategory->parent)
-                    <li typeof="v:Breadcrumb"><a property="v:title" rel="v:url"
-                            href="{{ route('client.category.parent', ['slug_category' => $itemCategory->parent->category_slug]) }}"
-                            title="{{ $itemCategory->parent->category_name }}">{{ $itemCategory->parent->category_name }}</a>
-                    </li>
-                    <li typeof="v:Breadcrumb"><a property="v:title" rel="v:url"
-                            href="{{ route('client.category.childrent', ['slug_category' => $itemCategory->parent->category_slug, 'slug_category_childrent' => $itemCategory->category_slug]) }}"
-                            title="{{ $itemCategory->category_name }}">{{ $itemCategory->category_name }}</a>
-                    </li>
-                @else
-                    <li typeof="v:Breadcrumb"><a property="v:title" rel="v:url"
-                            href="{{ route('client.category.parent', ['slug_category' => $itemCategory->category_slug]) }}"
-                            title="{{ $itemCategory->category_name }}">{{ $itemCategory->category_name }}</a>
-                    </li>
-                @endif
-                @if ($itemCategory)
-                    <li typeof="v:Breadcrumb"><a property="v:title" rel="v:url"
-                            href="{{ route('client.post', ['slug_category' => $itemCategory->category_slug, 'slug_post' => "$post->post_slug-$post->id"]) }}"
-                            title="{{ $post->post_title }}">{{ $post->post_title }}</a></li>
-                @endif
-            </ul>
-        </div>
-    </div>
     <div class="wrap-content main-content flex-main">
         <div class="main_left">
-            <!-- start -->
-            <h1 class="visit_hidden">CÔNG TY XÂY DỰNG GIA LONG</h1>
-            <h2 class="visit_hidden">CÔNG TY XÂY DỰNG GIA LONG</h2>
-            <h3 class="visit_hidden">CÔNG TY XÂY DỰNG GIA LONG</h3>
-            <h4 class="visit_hidden">CÔNG TY XÂY DỰNG GIA LONG</h4>
-            <h5 class="visit_hidden">CÔNG TY XÂY DỰNG GIA LONG</h5>
-            <h6 class="visit_hidden">CÔNG TY XÂY DỰNG GIA LONG</h6>
-            <!-- end -->
             <div class="title_sl">
                 <h1 class="tieude_sl">
                     {{ $post->post_title }}
@@ -242,12 +206,6 @@
 
     </div>
     @include('client.components.slick.partner')
-    @if ($configLayout)
-        @include('client.components.slick.square', [
-            'item' => $configLayout,
-            'contentSection' => 'content-section',
-        ])
-    @endif
     @include('client.components.footer', ['contentSection' => 'content-section'])
     @include('client.components.host_fix')
 @endsection

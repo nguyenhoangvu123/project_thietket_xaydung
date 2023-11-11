@@ -81,7 +81,7 @@
                                 @if ($item->config_type_show == 0)
                 
                                     <ul>
-                                        @if ($item->category->childrens->count() > 0)
+                                        @if ($item->category)
                                             @foreach ($item->category->childrens as $key => $category)
 
                                                 <li class="{{ $key == 0 ? 'active' : '' }}">
@@ -94,13 +94,6 @@
                                                     </a>
                                                 </li>
                                             @endforeach
-                                        @else
-                                            <li class="active">
-                                                <a data-type="tab-{{ $item->category->config_slug }}"
-                                                    data-id={{ $item->id }} data-number=4 href="javascript:"
-                                                    title="{{ $item->category->category_name }}">{{ $item->category->category_name }}
-                                                </a>
-                                            </li>
                                         @endif
                                     </ul>
                                 @endif
@@ -129,7 +122,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                    @elseif ($item->category->childrens->count() > 0)
+                                    @elseif ($item->category)
                                         @php
                                             $categoryFirstChild = $item->category->childrens->first();
                                             $listPostCategoryFirstChild = $categoryFirstChild->posts;

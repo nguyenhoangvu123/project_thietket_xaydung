@@ -19,8 +19,8 @@
     <meta name="ICBM" content="">
     <meta name="geo.position" content="">
     <meta name="geo.placename"
-        content="Địa Chỉ: 341A, Lê Trọng Tấn, Phường  Sơn Kỳ,  Quận Tân Phú TPHCM - MST:  0314081433 ">
-    <meta name="author" content="CÔNG TY XÂY DỰNG GIA LONG">
+        content="">
+    <meta name="author" content="">
     <meta name="google-site-verification" content="NvaXOC1iMt4G3rvE0lNH4YoV7o3WC5tsuaCoQYHztFA" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @routes
@@ -43,11 +43,17 @@
     </script>
     <script type="text/javascript" src="{{ asset('client/js/jquery-1.9.1.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('client/assets/css/font.css') }} ">
+	@if(!request()->is('/'))
+    <link rel="stylesheet" href="{{ asset('client/assets/css/style_new.css') }}">
+	@endif
     <link rel="stylesheet" href="{{ asset('client/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('client/assets/css/hoverEffects.css') }}">
     <link rel="stylesheet" href="{{ asset('client/assets/css/navstylechange.css') }}">
     <link rel="stylesheet" href="{{ asset('client/assets/css/settings.css') }}">
     <link rel="stylesheet" href="{{ asset('client/assets/css/style_revolution.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('client/assets/css/jquery.mmenu.all.css') }}" />
+	<link rel="stylesheet" href="{{ asset('client/assets/css/font-awesome/css/font-awesome.min.css') }}" type="text/css">
+
     <link href="{{ asset('client/assets/css/bootstrap.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('client/assets/css/reset.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/easy-autocomplete.css') }}">

@@ -19,61 +19,49 @@ class CategoryController extends Controller
 
     public function childrent($slug_category, $slug_category_childrent)
     {
-        $configLayout = $this->configLayout
-            ->with([
-                'posts',
-                'category' => function ($q) {
-                    $q->with('posts');
-                }
-            ])
-            ->where('config_status', $this->configLayout::CONFIG_SHOW)
-            ->where("config_image", "<>", "")
-            ->orderBy('config_postion', 'DESC')
+
+
+
+        $itemCategory = $this->category->where('category_slug', $slug_category_childrent)
+            ->whereRaw('parent_id = (SELECT id FROM categories where category_slug = ? limit 1 )', [$slug_category])
             ->first();
-        $slugConfigLayout = $configLayout->config_slug;
-        $listCategoryChildren = $this->category->where('category_slug', $slug_category)->first();
-        $itemCategory = $this->category->where('category_slug', $slug_category_childrent)->first();
-        if (!$listCategoryChildren && !$itemCategory) {
+        if (!$itemCategory) {
             return abort(404);
         }
+
         $listPost = $this->post->where("category_id", $itemCategory->id)->paginate(LIMIT_PAGE_CLINET);
-        return view('client.pages.category', [
+        return view('client.pages.category_child', [
             'itemCategory' => $itemCategory,
-            'listCategoryChildren' => $listCategoryChildren,
             'listPost' => $listPost,
-            'configLayout' => $configLayout,
-            'slugConfigLayout' => $slugConfigLayout
         ]);
     }
 
     public function parent($slug_category)
     {
-        $configLayout = $this->configLayout
+        $listPost = null;
+        $itemCategory = $this->category
+            ->where('category_slug', $slug_category)
             ->with([
-                'posts',
-                'category' => function ($q) {
-                    $q->with('posts');
+                'childrens' => function ($query1) {
+                    $query1->where('status', Category::STATUS_SHOW);
+                    $query1->with([
+                        'posts' => function ($query2) {
+                            $query2->where('status', Post::SHOW_STATUS);
+                        }
+                    ]);
                 }
             ])
-            ->where('config_status', $this->configLayout::CONFIG_SHOW)
-            ->where("config_image", "<>", "")
-            ->orderBy('config_postion', 'DESC')
             ->first();
-        $listCategoryChildren = $this->category->where('category_slug', $slug_category)->first();
-        if (!$listCategoryChildren) {
+        if (!$itemCategory) {
             return abort(404);
         }
-        $listPost = $this->post->where("category_id", $listCategoryChildren->id)->paginate(LIMIT_PAGE_CLINET);
-        $categortChildrentFirst = $listCategoryChildren->childrens->first();
-        if ($listCategoryChildren->childrens->count() > 0) {
-            $listPost = $this->post->where("category_id", $categortChildrentFirst->id)->paginate(LIMIT_PAGE_CLINET);
+       
+        if ($itemCategory->childrens->count() <= 0) {
+            $listPost = $this->post->where("category_id", $itemCategory->id)->paginate(LIMIT_PAGE_CLINET);
         }
-        $slugConfigLayout = $configLayout->config_slug;
         return view('client.pages.category', [
-            'listCategoryChildren' => $listCategoryChildren,
-            'listPost' => $listPost,
-            'configLayout' => $configLayout,
-            'slugConfigLayout' => $slugConfigLayout
+            'itemCategory' => $itemCategory,
+            'listPost' => $listPost
         ]);
     }
 }

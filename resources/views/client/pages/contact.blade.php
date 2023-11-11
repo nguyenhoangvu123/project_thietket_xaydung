@@ -1,15 +1,6 @@
 @extends('client.layouts.master')
 @section('content')
-    <div class="wrap-content">
-        <div xmlns:v="http://rdf.data-vocabulary.org/" id="breadcrumbs">
-            <ul itemprop="breadcrumb" class="breadcrumb">
-                <li typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="{{ route('client.home') }}"
-                        title=""><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                <li typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="{{ route('client.contact') }}"
-                        title=""><i class="fa fa-home" aria-hidden="true"></i> Liên hệ</a></li>
-            </ul>
-        </div>
-    </div>
+  
     <div class="wrap-content main-content flex-main">
         <div class="main_left">
             <!-- start -->
@@ -163,12 +154,6 @@
 
     </div>
     @include('client.components.slick.partner')
-    @if ($configLayout)
-        @include('client.components.slick.square', [
-            'item' => $configLayout,
-            'contentSection' => 'content-section',
-        ])
-    @endif
     @include('client.components.footer', ['contentSection' => 'content-section'])
     @include('client.components.host_fix')
 @endsection

@@ -30,8 +30,8 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('client.components.nav', CategoryComposer::class);
-        View::composer(['client.components.header', 'client.components.nav', 'client.components.host_fix'], SettingBasic::class);
-        View::composer('client.components.footer', SettingFooterComposer::class);
+        View::composer(['client.components.header', 'client.components.nav'], SettingBasic::class);
+        View::composer(['client.components.footer', 'client.components.nav'], SettingFooterComposer::class);
         View::composer(['client.components.slick.customer', 'client.components.slick.review_customer', 'client.components.slick.partner'], SlideHardComposer::class);
         View::composer(
             [
