@@ -1,6 +1,7 @@
-@include('client.components.header')
-@yield('after_css')
-@include('client.components.nav')
-@yield('content')
-@include('client.components.script')
-@yield('after_scripts')
+    <html lang="vi">
+    @include('client.components.header.index')
+    @yield('content')
+    @include('client.components.footer')
+    </body>
+
+    </html>
