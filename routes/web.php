@@ -2,13 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\HomeController;
-use App\Http\Controllers\Client\PostController;
-use App\Http\Controllers\Client\AdviceController;
-use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\CategoryController;
-use App\Http\Controllers\Client\IntroduceController;
-use App\Http\Controllers\Client\AccountingController;
-use App\Http\Controllers\Client\CommentIntroduceController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +17,4 @@ use App\Http\Controllers\Client\CommentIntroduceController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('client.home');
+Route::get('/{slug}', [CategoryController::class,'index'])->name('client.category');

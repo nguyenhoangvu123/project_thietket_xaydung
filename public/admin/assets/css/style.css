@@ -107,9 +107,11 @@ button.submit-lg {
     border-radius: 2px;
     color: red;
 }
+
 .slick-track {
     width: 4040px;
 }
+
 .table-responsive .header {
     border-radius: 0px !important;
     border: none !important;

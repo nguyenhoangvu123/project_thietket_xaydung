@@ -1,0 +1,35 @@
+.tabs .active,
+.tabs-contact .active {
+    color: #211f1f !important;
+    border-bottom: 1.5px solid #e81d2b !important;
+}
+
+.tabs .tab,
+.tabs-contact .tab-contact {
+    border-bottom: 1.5px solid #e3e5e5;
+    cursor: pointer;
+}
+
+.tabs .tab:hover {
+    color: #211f1f;
+}
+
+.tab-contents .tab-content,.tabs-content-contact .tab-content-contact   {
+    display: none;
+}
+
+.tab-contents .active, .tabs-content-contact .active {
+    display: block !important;
+}
+
+input[type=text] {
+    border: 1px solid #e5e1e1;
+    padding: 9px 16px 13px;
+}
+
+.is-invalid {
+    display: block;
+    color: red;
+    margin-top: 10px;
+    font-size: 12px;
+}
